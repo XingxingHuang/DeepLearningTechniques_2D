@@ -16,7 +16,7 @@
 
 **YOLO2** [YOLO9000: Better, Faster, Stronger](https://arxiv.org/pdf/1612.08242.pdf)   BN, higher resolution, anchor boxes, Dimension Clusters to find anchor boxes, Multi-Scale Training
 
-**YOLO3** [How to implement a YOLO (v3) object detector from scratch in PyTorch](https://blog.paperspace.com/how-to-implement-a-yolo-object-detector-in-pytorch/)
+**YOLO3** [How to implement a YOLO (v3) object detector from scratch in PyTorch](https://blog.paperspace.com/how-to-implement-a-yolo-object-detector-in-pytorch/), [YOLOv3: An Incremental Improvement](https://pjreddie.com/media/files/papers/YOLOv3.pdf)
 
 **R-CNN** Object detection in a larger size image.
 
@@ -44,6 +44,30 @@
 
 **softmax vs sigmoid** Softmaxing class scores assume that the classes are mutually exclusive.
 
+
+## My tips
+
+* Top tips
+	* Check data and labels to make sure they are correct.
+	* Check the code by overfitting a small dataset to make sure they are correct.
+	* Analyze the FP and FN, also the fake images.
+
+* Simplyfy images features. 
+	* Too much noise in the image, resize may help.
+	* Use mask to focus on interested region
+* Normalization
+	* Use correct color region as normalization,
+
+* Training
+	* before a large run, please test it out. 
+	* be clear why you run each task. 
+	* analysis the task after each run 
+	
+### team works are hard in most case
+- data
+	- a
+- traning
+	- a
 
 ## Problems in DL
 
