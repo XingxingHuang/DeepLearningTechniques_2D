@@ -1,5 +1,7 @@
 # DeepLearning-Techniques
 
+I recall the important informations, not the details. 
+
 ## Old Models
 **AlexNet** Lots of ideas. to be added. But too many parameters
 
@@ -11,18 +13,18 @@
 
 **DenseNet** CVPR 2017. connect layers with all other following layers. Inplement the idea with "Dense Block". Parameter small, but to many memory.
 
+**R-CNN** [1311.2524](https://arxiv.org/abs/1311.2524) Use [Selective Search](https://ivi.fnwi.uva.nl/isis/publications/2013/UijlingsIJCV2013/UijlingsIJCV2013.pdf) method to propose 2000-3000 regions. Object detection in a larger size image, but also avoid to classify a huge number of regions. 
+
+**Fast R-CNN** [1504.08083](https://arxiv.org/abs/1504.08083) Spatial Pyramid Pooling, ROI Pooling. You don’t have to feed 2000 region proposals each time. Only extract features one time.
+
+**Faster R-CNN** [1506.01497](https://arxiv.org/pdf/1506.01497) Use Region Proposal Network to propose boxes/regions.
+
 ## Models
 **YOLO**	<https://pjreddie.com/darknet/yolo/> [You Only Look Once: Unified, Real-Time Object Detection](https://arxiv.org/pdf/1506.02640.pdf)
 
 **YOLO2** [YOLO9000: Better, Faster, Stronger](https://arxiv.org/pdf/1612.08242.pdf)   BN, higher resolution, anchor boxes, Dimension Clusters to find anchor boxes, Multi-Scale Training
 
 **YOLO3** [How to implement a YOLO (v3) object detector from scratch in PyTorch](https://blog.paperspace.com/how-to-implement-a-yolo-object-detector-in-pytorch/), [YOLOv3: An Incremental Improvement](https://pjreddie.com/media/files/papers/YOLOv3.pdf)
-
-**R-CNN** Object detection in a larger size image.
-
-**Fast R-CNN** Spatial Pyramid Pooling, ROI Pooling
-
-**Faster R-CNN** Use Region Proposal Network to propose boxes/regions.
 
 **SSD** fast, but not good as YOLO
 
@@ -32,7 +34,7 @@
 
 ## Techniques
 
-**Spatial Pyramid Pooling** deal with different size inputs
+**Spatial Pyramid Pooling** [1406.4729](https://arxiv.org/abs/1406.4729) deal with different size inputs.
 
 **Region of Interested Pooling** ROI pooling. share features by combine the bbox regression and CNN.
 
@@ -55,13 +57,15 @@
 * Simplyfy images features. 
 	* Too much noise in the image, resize may help.
 	* Use mask to focus on interested region
+	
 * Normalization
 	* Use correct color region as normalization,
 
 * Training
 	* before a large run, please test it out. 
 	* be clear why you run each task. 
-	* analysis the task after each run 
+	* analysis the task after each run.
+	* Do not use large dropout in the begining to save time.
 	
 ### team works are hard in most case
 - data
