@@ -17,7 +17,7 @@ I recall the important informations, not the details.
 
 **Fast R-CNN** [1504.08083](https://arxiv.org/abs/1504.08083) Spatial Pyramid Pooling, ROI Pooling. You don’t have to feed 2000 region proposals each time. Only extract features one time.
 
-**Faster R-CNN** [1506.01497](https://arxiv.org/pdf/1506.01497) Use Region Proposal Network to propose boxes/regions.
+**Faster R-CNN** [1506.01497](https://arxiv.org/pdf/1506.01497) Use Region Proposal Network (RPN) and anchors to propose boxes/regions.
 
 ## Models
 **YOLO**	<https://pjreddie.com/darknet/yolo/> [You Only Look Once: Unified, Real-Time Object Detection](https://arxiv.org/pdf/1506.02640.pdf)
@@ -26,7 +26,7 @@ I recall the important informations, not the details.
 
 **YOLO3** [How to implement a YOLO (v3) object detector from scratch in PyTorch](https://blog.paperspace.com/how-to-implement-a-yolo-object-detector-in-pytorch/), [YOLOv3: An Incremental Improvement](https://pjreddie.com/media/files/papers/YOLOv3.pdf)
 
-**SSD** fast, but not good as YOLO
+**SSD** fast, but not good as YOLO? different scale detection.
 
 **Mask RCNN** unkown
 
@@ -46,12 +46,25 @@ I recall the important informations, not the details.
 
 **softmax vs sigmoid** Softmaxing class scores assume that the classes are mutually exclusive.
 
+**Edge Boxes** Locating Object Proposals from Edges, only use CV method.
+
+**Selective Search** Region proposal method used in RCNN
 
 ## My tips
+
+Rules of Thumb
+
+```
+- Create clean training data with good labels.
+- Define the problem simply using CV method.
+- Make the model robust using data argumentations.
+- Choose the right task and right CNN (classification/segmentation/multi-scale detetion, and so on).
+```
 
 * Top tips
 	* Check data and labels to make sure they are correct.
 	* Check the code by overfitting a small dataset to make sure they are correct.
+	* Get a baseline model as quick as possible.
 	* Analyze the FP and FN, also the fake images.
 
 * Simplyfy images features. 
@@ -66,6 +79,11 @@ I recall the important informations, not the details.
 	* be clear why you run each task. 
 	* analysis the task after each run.
 	* Do not use large dropout in the begining to save time.
+	
+* Batch normalization tips
+	* make sure you do not use bias term in the last conv layer.
+	* a large batch size may slow down the training
+	* a large batch size should be used with larger learning rate (> 1e-3). some references:[1609.04836](https://arxiv.org/pdf/1609.04836), [1711.00489](https://arxiv.org/abs/1711.00489)
 	
 ### team works are hard in most case
 - data
