@@ -3,6 +3,9 @@
 I recall the important informations, not the details. 
 
 ## Old Models
+
+**LeNet-5** First network by [LeCun](http://yann.lecun.com/exdb/lenet/). 
+
 **AlexNet** Lots of ideas. to be added. But too many parameters
 
 **VGG16** Use small conv kernel to reduce the number of parameters. Parameters are still large in the last FC layer.
