@@ -30,21 +30,23 @@ The rule of neural networks
 
 **Network-In-Network** Power for non-linear. 
 
-**Inception** add 1*1 conv. Less parameters, combine different filter sizes (1x1, 3x3, 5x5), but parallel programming need more computer power.
+**Inception** add 1*1 conv. Less parameters, combine different filter sizes (1x1, 3x3, 5x5), but parallel programming need more computer power. In the paper, the author says he inspired by the [Sparsely connected architectures](https://arxiv.org/abs/1310.6343). While the original paper is hard to read, the principle, Hebbian principle,  is very interesting. The follow up papers are [Inception v2 and v3](https://arxiv.org/pdf/1512.00567v3.pdf) and [Inception v4, Inception-ResNet](https://arxiv.org/pdf/1602.07261.pdf). A good comparision is found in [Medium](https://towardsdatascience.com/a-simple-guide-to-the-versions-of-the-inception-network-7fc52b863202) (A Simple Guide to the Versions of the Inception Network).
 
 **ResNet** Can be even deeper. Some layers are redundant. A followed up **ResNeXt** model which has similar ideas as Inception, Xeption, use depthwise convolution to decrease the number of parameters.
 
 **DenseNet** CVPR 2017. connect layers with all other following layers. Inplement the idea with "Dense Block". Parameter small, but to many memory.
 
-**YOLO**	<https://pjreddie.com/darknet/yolo/> [You Only Look Once: Unified, Real-Time Object Detection](https://arxiv.org/pdf/1506.02640.pdf)
+**ResNeXt** Briliant idea that combine resnet and Xception. Good paper to read.
 
-**YOLO2** [YOLO9000: Better, Faster, Stronger](https://arxiv.org/pdf/1612.08242.pdf)   BN, higher resolution, anchor boxes, Dimension Clusters to find anchor boxes, Multi-Scale Training
+**YOLO**	[1506.02640](https://arxiv.org/abs/1506.02640) Provide an end to end solution to detect multiple objects in one images. The model predicts the location and the class in the mean time (5 parameters). <https://pjreddie.com/darknet/yolo/> [You Only Look Once: Unified, Real-Time Object Detection](https://arxiv.org/pdf/1506.02640.pdf)
 
-**YOLO3** [How to implement a YOLO (v3) object detector from scratch in PyTorch](https://blog.paperspace.com/how-to-implement-a-yolo-object-detector-in-pytorch/), [YOLOv3: An Incremental Improvement](https://pjreddie.com/media/files/papers/YOLOv3.pdf)
+**YOLO2** [YOLO9000: Better, Faster, Stronger](https://arxiv.org/pdf/1612.08242.pdf)   BN, higher resolution, anchor boxes, Dimension Clusters to find anchor boxes, fine-gained feature (skip connection similar with ResNet), Multi-Scale Training (different input size instead of resize).
+
+**YOLO3** [1804.02767](https://arxiv.org/abs/1804.02767). At 320 × 320 YOLOv3 runs in 22 ms at 28.2 mAP, as accurate as SSD but three times faster. Get better performance for small objects. [How to implement a YOLO (v3) object detector from scratch in PyTorch](https://blog.paperspace.com/how-to-implement-a-yolo-object-detector-in-pytorch/) Make prediction at 3 scales. Use logistic instead of softmax. Create DarkNet based on ResidualNet.
 
 **SSD** fast, but not good as YOLO? different scale detection.
 
-**R-CNN** [1311.2524](https://arxiv.org/abs/1311.2524) Use [Selective Search](https://ivi.fnwi.uva.nl/isis/publications/2013/UijlingsIJCV2013/UijlingsIJCV2013.pdf) method to propose 2000-3000 regions. Object detection in a larger size image, but also avoid to classify a huge number of regions. 
+**R-CNN** [1311.2524](https://arxiv.org/abs/1311.2524) R-CNN decomposes the overall detection problem into two subproblems: to first utilize low-level cues such as color and superpixel consistency for potential object proposals in a category-agnostic fashion, and to then use CNN classifiers to identify object categories at those locations. R-CNN use [Selective Search](https://ivi.fnwi.uva.nl/isis/publications/2013/UijlingsIJCV2013/UijlingsIJCV2013.pdf) method to propose 2000-3000 regions. Object detection in a larger size image, but also avoid to classify a huge number of regions. 
 
 **Fast R-CNN** [1504.08083](https://arxiv.org/abs/1504.08083) Used [Spatial Pyramid Pooling](https://arxiv.org/abs/1406.4729) idea, proposed ROI Pooling to get fixed output size. You don’t have to feed 2000 region proposals each time. Only extract features one time. Used SoftmaxLoss instead of SVM, SmoothL1Loss instead of Bounding box.
 
@@ -59,7 +61,9 @@ earlier higher resolution features and upsampled feature to increase get better 
 
 **Mask R-CNN** [Marr Prize at ICCV 2017](https://arxiv.org/abs/1703.06870)
 
-**RetinaNet** [Best Student Paper Award at ICCV 2017](https://arxiv.org/abs/1708.02002)
+**FCN** [1612.03144](https://arxiv.org/abs/1612.03144) Feature Pyramid Networks for Object Detection. They exploit the inherent multi-scale, pyramidal hierarchy of deep convolutional networks to construct feature pyramids with marginal extra cost.
+
+**RetinaNet** [Best Student Paper Award at ICCV 2017](https://arxiv.org/abs/1708.02002) Use focal loss ( keep using FPN model). One stage detector, fast and accurate. But YOLO3 claim higher performance in the paper.
 
 **DeepLab** 
 
@@ -152,6 +156,15 @@ Deep learning method
 
 ```
 preprocess -> CNN
+```
+
+Features
+
+```
+- Haar
+- SIFT
+- HOG
+- convolutional features
 ```
 
 * canny edge detection ([opencv tutorial](https://docs.opencv.org/3.1.0/da/d22/tutorial_py_canny.html)). A very useful edge detection method and will provide good intuiations after you learn it.
