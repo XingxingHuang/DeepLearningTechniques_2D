@@ -158,7 +158,7 @@ Deep learning method
 preprocess -> CNN
 ```
 
-Features
+### Features
 
 ```
 - Haar
@@ -169,10 +169,13 @@ Features
 
 * canny edge detection ([opencv tutorial](https://docs.opencv.org/3.1.0/da/d22/tutorial_py_canny.html)). A very useful edge detection method and will provide good intuiations after you learn it.
 * SIFT Keypoints and Descriptors. ([opencv introduction](https://docs.opencv.org/3.4/da/df5/tutorial_py_sift_intro.html)) Scale-Invariant Feature Transform
-* A review paper, ["A Performance Evaluation of Local Descriptors" CVPR 2003](http://www.ai.mit.edu/courses/6.891/handouts/mikolajczyk_cvpr2003.pdf), shows the local descriptors and helps you to understand how edge detectors work. These are                     hand-craft features which are similar to what CNN created.
+* A review paper, ["A Performance Evaluation of Local Descriptors" CVPR 2003](http://www.ai.mit.edu/courses/6.891/handouts/mikolajczyk_cvpr2003.pdf), shows the local descriptors and helps you to understand how edge detectors work. There are hand-craft features which are similar to what CNN created.
+
+### Sigal processing
+
+[Wiener Filter](https://en.wikipedia.org/wiki/Wiener_filter) (维纳滤波) a filter used to produce an estimate of a desired or target random process by linear time-invariant (LTI) filtering of an observed noisy process, assuming known stationary signal and noise spectra, and additive noise.
 
 ![](./**.png)
-
 
 
 ## Chinese demo resources
