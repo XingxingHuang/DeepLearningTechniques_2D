@@ -1,6 +1,6 @@
 # DeepLearning-Techniques
 
-Recall the important informations, not the details. 
+This repo is for recalling the important informations, not for the details. So I will not explain too much in each topic. But I am thinking to posting more thoughts in to [https://medium.com] in 2019. 
 
 Summary of visual recognition tasks:
 
@@ -9,7 +9,6 @@ Summary of visual recognition tasks:
 - object localization
 - segmentation (Semantic / Instance segmentation)
 - Autoencoder / Variational Autoencoder
-
 - action recoginition
 - human-object interaction
 
@@ -40,17 +39,19 @@ The rule of neural networks
 
 **YOLO**	[1506.02640](https://arxiv.org/abs/1506.02640) Provide an end to end solution to detect multiple objects in one images. The model predicts the location and the class in the mean time (5 parameters). <https://pjreddie.com/darknet/yolo/> [You Only Look Once: Unified, Real-Time Object Detection](https://arxiv.org/pdf/1506.02640.pdf)
 
-**YOLO2** [YOLO9000: Better, Faster, Stronger](https://arxiv.org/pdf/1612.08242.pdf)   BN, higher resolution, anchor boxes, Dimension Clusters to find anchor boxes, fine-gained feature (skip connection similar with ResNet), Multi-Scale Training (different input size instead of resize).
+**YOLO2** [YOLO9000: Better, Faster, Stronger](https://arxiv.org/pdf/1612.08242.pdf)   BN, higher resolution, anchor boxes, Dimension Clusters to find anchor boxes, fine-gained feature (skip connection similar with ResNet), Multi-Scale Training (different input size instead of resize). Check the paper to check how many methods they have tried.
 
-**YOLO3** [1804.02767](https://arxiv.org/abs/1804.02767). At 320 × 320 YOLOv3 runs in 22 ms at 28.2 mAP, as accurate as SSD but three times faster. Get better performance for small objects. [How to implement a YOLO (v3) object detector from scratch in PyTorch](https://blog.paperspace.com/how-to-implement-a-yolo-object-detector-in-pytorch/) Make prediction at 3 scales. Use logistic instead of softmax. Create DarkNet based on ResidualNet.
+**YOLO3** [1804.02767](https://arxiv.org/abs/1804.02767). At 320 × 320 YOLOv3 runs in 22 ms at 28.2 mAP, as accurate as SSD but three times faster. Get better performance for small objects. [How to implement a YOLO (v3) object detector from scratch in PyTorch](https://blog.paperspace.com/how-to-implement-a-yolo-object-detector-in-pytorch/) Make prediction with 9 archor boxes and 3 scales. Use independent logistic classifiers instead of oen softmax. Create DarkNet based on Residual Net by adding some shortcut connections.
 
-**SSD** fast, but not good as YOLO? different scale detection.
+**SSD** [1512.02325](1512.02325) Combined ideas from R-CNN and YOLO. Provide different scale detection. Faster but slightly worse performance (Better performance compared to Faster RCNN is report in the paper).
 
-**R-CNN** [1311.2524](https://arxiv.org/abs/1311.2524) R-CNN decomposes the overall detection problem into two subproblems: to first utilize low-level cues such as color and superpixel consistency for potential object proposals in a category-agnostic fashion, and to then use CNN classifiers to identify object categories at those locations. R-CNN use [Selective Search](https://ivi.fnwi.uva.nl/isis/publications/2013/UijlingsIJCV2013/UijlingsIJCV2013.pdf) method to propose 2000-3000 regions. Object detection in a larger size image, but also avoid to classify a huge number of regions. 
+**R-CNN** [1311.2524](https://arxiv.org/abs/1311.2524) R-CNN decomposes the overall detection problem into two subproblems: to first utilize low-level cues such as color and superpixel consistency for potential object proposals in a category-agnostic fashion, and to then use CNN classifiers to identify object categories at those locations. R-CNN use [Selective Search](https://ivi.fnwi.uva.nl/isis/publications/2013/UijlingsIJCV2013/UijlingsIJCV2013.pdf) method to propose 2000-3000 regions, CNN as feature extractor, SVM as classifier. Object detection in a larger size image, but also avoid to classify a huge number of regions. 
 
-**Fast R-CNN** [1504.08083](https://arxiv.org/abs/1504.08083) Used [Spatial Pyramid Pooling](https://arxiv.org/abs/1406.4729) idea, proposed ROI Pooling to get fixed output size. You don’t have to feed 2000 region proposals each time. Only extract features one time. Used SoftmaxLoss instead of SVM, SmoothL1Loss instead of Bounding box.
+**Fast R-CNN** [1504.08083](https://arxiv.org/abs/1504.08083) You don’t have to feed 2000 region proposals each time. Only extract features one time. Used [Spatial Pyramid Pooling, 1406.4729](https://arxiv.org/abs/1406.4729) idea, proposed ROI Pooling to get fixed output size. Used SoftmaxLoss instead of SVM, SmoothL1Loss instead of Bounding box.
 
 **Faster R-CNN** [1506.01497](https://arxiv.org/pdf/1506.01497) Use Region Proposal Network (RPN) and anchors to propose boxes/regions.
+
+**Mask R-CNN** [Marr Prize at ICCV 2017](https://arxiv.org/abs/1703.06870) Extend faster R-CNN by adding a branch for predicting segmentation masks.
 
 **FCN** [CVPR 2015](https://www.cv-foundation.org/openaccess/content_cvpr_2015/html/Long_Fully_Convolutional_Networks_2015_CVPR_paper.html) idea of upsample
 
@@ -58,8 +59,6 @@ The rule of neural networks
 earlier higher resolution features and upsampled feature to increase get better representation. 
 
 **SegNet** [1511.00561](https://arxiv.org/abs/1511.00561) no full connection layer, recording max-pooling indices, memory efficient. FCN, Deeplab, DeconvNet are compared to this model in the paper.
-
-**Mask R-CNN** [Marr Prize at ICCV 2017](https://arxiv.org/abs/1703.06870)
 
 **FCN** [1612.03144](https://arxiv.org/abs/1612.03144) Feature Pyramid Networks for Object Detection. They exploit the inherent multi-scale, pyramidal hierarchy of deep convolutional networks to construct feature pyramids with marginal extra cost.
 
@@ -90,6 +89,11 @@ earlier higher resolution features and upsampled feature to increase get better 
 **Selective Search** [Selective Search for Object Recognition](http://www.huppelen.nl/publications/selectiveSearchDraft.pdf) A traditional CV method for region proposals used in RCNN. Considered color, texture, size, fill similarity between blocks and combine them using the minimum spanning tree method.
 
 **Edge Boxes** Locating Object Proposals from Edges, use only CV method. decrease the region proposal speed from 2s (Selective Search) to 0.2 s
+
+**RNN** RNN > LSTM > GRU > 
+
+## Interesting Applications
+**Neural Style Transfer** [Gatys et al., 2015a](https://arxiv.org/abs/1505.07376), [Gatys et al., 2015b](https://arxiv.org/abs/1508.06576)
 
 ## Tips
 
