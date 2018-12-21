@@ -67,7 +67,7 @@ Loss function: box coordinate + box size (square) + confidence
 
 **Faster R-CNN** [1506.01497](https://arxiv.org/pdf/1506.01497) Extract feature map and then use Region Proposal Network (RPN) and anchors to propose boxes/regions. They only use 9 anchors with 3 different scales and 3 aspect ratios.
 
-**Mask R-CNN** [Marr Prize at ICCV 2017](https://arxiv.org/abs/1703.06870) Extend faster R-CNN by adding a branch for predicting segmentation masks.
+**Mask R-CNN** [Marr Prize at ICCV 2017](https://arxiv.org/abs/1703.06870) Extend faster R-CNN by adding a branch for predicting segmentation masks. (x) Use ResNeXt-101 + FPN for feature extraction. (x) replace the ROI pooling to ROI align. (x) add FCN layers to get segmentations. This model is not huge improvement, but it can get state of art performance and be easily extend to other tasks. A good paper to read.
 
 ```
 Using archor boxes in these object detection algorithm is just using human prior to simplify the problems. How to design the optimal distributions of boxes is an open question as said in SSD paper. I believe it is important to take human prior and think more about the problems in real industrial projects. 
