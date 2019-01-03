@@ -110,6 +110,8 @@ earlier higher resolution features and upsampled feature to increase get better 
 
 **Edge Boxes** Locating Object Proposals from Edges, use only CV method. decrease the region proposal speed from 2s (Selective Search) to 0.2 s
 
+**Group Normalization** [1803.08494](https://arxiv.org/abs/1803.08494) GN divides the channels into groups and computes within each group the mean and variance for normalization. GN's computation is independent of batch sizes, and its accuracy is stable in a wide range of batch sizes.
+
 **RNN** RNN > LSTM > GRU > 
 
 ## Interesting Applications
