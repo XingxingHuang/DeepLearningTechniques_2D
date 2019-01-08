@@ -94,6 +94,8 @@ earlier higher resolution features and upsampled feature to increase get better 
 
 ## Techniques
 
+**ReLu, Leaky Relu, ELU, SELU** The ReLu keep the gradient to 1 to avoid the gradient vanishing and exploding problems, but it face dying ReLu problem as the model has low response for negative values. The [Leaky ReLu](https://ai.stanford.edu/~amaas/papers/relu_hybrid_icml2013_final.pdf) in 2013, [ELU](https://arxiv.org/abs/1511.07289) in 2015, [SELU](https://arxiv.org/abs/1706.02515) (scaled exponential Linear Unit) in 2017 solves the problem by change the format when x < 0.
+
 **Spatial Pyramid Pooling** [1406.4729](https://arxiv.org/abs/1406.4729) Kaiming he. Also called SPP-Net. deal with different size inputs. Smart idea, but I think the use pooling for different scales may still cause problem. Especially your target has a large size variation. 
 
 **SQueezeNet** [1602.07360](https://arxiv.org/abs/1602.07360) Use the Fire module to squeeze the networks and get compressed model ~ 0.5 MB. Found DSD (Dense→Sparse→Dense) method that to use spared pretrain mdoel to retrain could get better results.
