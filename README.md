@@ -172,7 +172,13 @@ Rules of Thumb
 ## visualization
 * t-SNE, T-Distributed Stochastic Neighbouring Entities, [orignal paper](http://jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf)
 
+* Mask Input and check the predictions.
+
+* Deep Dream
+
 * [CAM](https://arxiv.org/abs/1610.02391), [grad-CAM](https://arxiv.org/abs/1610.02391)
+
+* [saliency maps 2013](https://arxiv.org/pdf/1312.6034v2) We compute the gradient of output category with respect to input image. All the positive values in the gradients tell us that a small change to that pixel will increase the output value. Hence, visualizing these gradients, which are the same shape as the image should provide some intuition of attention. [guided saliency, rectified/deconv saliency], check [keras-vis] for demos with codes.
 
 ## Traditional CV Techniques
 
