@@ -172,9 +172,9 @@ Rules of Thumb
 ## visualization
 * t-SNE, T-Distributed Stochastic Neighbouring Entities, [orignal paper](http://jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf)
 
-* Mask Input and check the predictions.
+* Mask Input and check the predictions. Or local interpretable model-agnostic explanations (LIME)
 
-* Deep Dream
+* Deep Dream ([github deepdream](https://github.com/google/deepdream))
 
 * [CAM](https://arxiv.org/abs/1610.02391), [grad-CAM](https://arxiv.org/abs/1610.02391)
 
