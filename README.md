@@ -28,15 +28,15 @@ Current big problems
 
 ## Models
 
-**LeNet-5** First network by [LeCun](http://yann.lecun.com/exdb/lenet/). 
+**LeNet-5** First network by [LeCun](http://yann.lecun.com/exdb/lenet/). LeNet-5 is a very simple network. It only has 7 layers, among which there are 3 convolutional layers (C1, C3 and C5), 2 sub-sampling (pooling) layers (S2 and S4), and 1 fully connected layer (F6), that are followed by the output layer. 
 
-**AlexNet** Similar to LeNet but famous and provide a template for future CNN. 1) Used ImageSet; 2) Used GPU; 2) Lots of ideas (ReLU, Nomalization LRN, data argumentation, dropout).
+**AlexNet** [papers.nips.cc](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf) Similar to LeNet but famous and provide a template for future CNN. 1) Used ImageSet; 2) Used GPU; 2) Lots of ideas (ReLU, Nomalization LRN (local response normalization), data argumentation, dropout, use max-pooling intead of average pooling). `LRN is found useless later as compared to BN and dropped afterward.`
 
 **OverFeat** [1312.6229](https://arxiv.org/pdf/1312.6229) combine localization, localization, detection. The winner of localization task in ILSVR2013
 
-**VGG16** Use small conv kernel to reduce the number of parameters. Parameters are still large in the last FC layer.
+**VGG16** [1409.1556](https://arxiv.org/abs/1409.1556) Use small conv kernel to reduce the number of parameters. Parameters are still large in the last FC layer.
 
-**Network-In-Network** Power for non-linear. 
+**Network-In-Network** [1312.4400](https://arxiv.org/abs/1312.4400) Power for non-linear. Reduce the AlexNet from 230M to 29M. Introduced mlpconv layer and increased the nolinearity.
 
 **Inception** add 1*1 conv. Less parameters, combine different filter sizes (1x1, 3x3, 5x5), but parallel programming need more computer power. In the paper, the author says he inspired by the [Sparsely connected architectures](https://arxiv.org/abs/1310.6343). While the original paper is hard to read, the principle, Hebbian principle,  is very interesting. The follow up papers are [Inception v2 and v3](https://arxiv.org/pdf/1512.00567v3.pdf) and [Inception v4, Inception-ResNet](https://arxiv.org/pdf/1602.07261.pdf). A good comparision is found in [Medium](https://towardsdatascience.com/a-simple-guide-to-the-versions-of-the-inception-network-7fc52b863202) (A Simple Guide to the Versions of the Inception Network).
 
@@ -126,24 +126,26 @@ earlier higher resolution features and upsampled feature to increase get better 
 Rules of Thumb
 
 ```
-- Create clean training data with good labels.
-- Define the problem simply using CV method.
-- Make the model robust using data argumentations.
-- Choose the right task and right CNN (classification/segmentation/multi-scale detetion, and so on).
+- Create clean training data (!) with clean (!) labels.
+- Solve the problem with deep learning and (!) CV method.
+- Make the model robust using data argumentations or preprocesses.
+- Choose the right task and right CNN (classification/segmentation/multi-scale detetion, and so on). This is very tricky as sometime times people want you to detect xxx, but actually you can think the problem in other ways like segmentation/ abnormal detection / etc.
 ```
 
 * Top tips
 	* Check data and labels to make sure they are correct.
 	* Check the code by overfitting a small dataset to make sure they are correct.
 	* Get a baseline model as quick as possible.
-	* Analyze the FP and FN, also the fake images.
+	* Analyze the FP and FN, also check with fake images.
 
 * Simplyfy images features. 
-	* Too much noise in the image, resize may help.
+	* Only focus on the region of interest 
+	* Too much noise in the image, preprocesses such as resize may help.
 	* Use mask to focus on interested region
 	
-* Normalization
-	* Use correct color region as normalization,
+* Image processing
+	* Use proper regions of interest to normalize the images.
+	* Before training, carefully check your processing methods!
 
 * Training
 	* before a large run, please test it out. 
@@ -157,10 +159,9 @@ Rules of Thumb
 	* a large batch size should be used with larger learning rate (> 1e-3). some references:[1609.04836](https://arxiv.org/pdf/1609.04836), [1711.00489](https://arxiv.org/abs/1711.00489)
 	
 ### team works are hard in most case
-- data
-	- a
-- traning
-	- a
+- organize the data
+- organize the training
+- discuss the results
 
 ## Problems in DL
 
