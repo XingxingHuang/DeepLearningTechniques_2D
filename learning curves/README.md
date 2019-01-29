@@ -9,6 +9,7 @@ Keep this gallery for daily check for inspirations.
 ![](train_dev_Screen Shot 2018-12-18 at 5.34.14 PM.png)
 ![](train-Screen Shot 2018-08-28 at 9.52.35 AM.png)
 ![](Screen Shot 2018-09-19 at 10.30.57 AM.png)
+![](train-dev-Screen Shot 2019-01-29 at 10.14.15 AM.png)
 
 ## Train
 ![](train-Screen Shot 2018-08-28 at 9.52.12 AM.png)
