@@ -84,7 +84,7 @@ I believe it is important to take human prior to solve problems in your industri
 Invloving these priors can simplify the problems and increase the model robustness.
 You can take more human priors into acount by thinking how to format the problems.
 ```
-
+**R-FCN** [NIPS2016, 1605.06409](https://arxiv.org/abs/1605.06409) with github [code](https://github.com/daijifeng001/r-fcn). By positive sensitive score map, the inference time is much faster than Faster R-CNN while still maintaining competitive accuracy. In R-CNN, the process (FC layers) after ROI pooling does not share among ROI, and takes time, which makes RPN approaches slow. And the FC layers increase the number of connections (parameters) and the complexity. In R-FCN, FC layers after ROI pooling are removed. Instead, all major complexity is moved before ROI pooling to generate the score maps. 
 
 **FCN** [CVPR 2015](https://www.cv-foundation.org/openaccess/content_cvpr_2015/html/Long_Fully_Convolutional_Networks_2015_CVPR_paper.html) idea of upsample and provide pixel level predictions. You can create FCN-32s,FCN-16s,FCN-8s with different upsample sizes.
 
@@ -101,6 +101,10 @@ You can take more human priors into acount by thinking how to format the problem
 #### Haven't finish the following series.
 
 [Deeply-Supervised Nets, 1409.5185](https://arxiv.org/abs/1409.5185)
+
+**MobileNet** 
+
+**ShuffleNet**
 
 **DeepLab** [1606.00915](https://arxiv.org/abs/1606.00915) The implementation with Tensoflow can be found in Github/tensorflow/models/research/[deeplab](https://github.com/tensorflow/models/tree/master/research/deeplab)
 
