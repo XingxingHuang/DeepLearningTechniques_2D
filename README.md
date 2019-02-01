@@ -201,11 +201,19 @@ Rules of Thumb
 
 * Mask Input and check the predictions. Or local interpretable model-agnostic explanations (LIME)
 
-* Deep Dream ([github deepdream](https://github.com/google/deepdream))
+* [saliency maps 1312.6034v2](https://arxiv.org/abs/1312.6034v2) The idea is to find pixels need to be changed the least to affect the class score the most. In this paper, they provide two visualizations. One method is to generate an image to maximise the class score and the other method is saliency map. They compute the gradient of output category with respect to input image. All the positive values in the gradients tell us that a small change to that pixel will increase the output value. Hence, visualizing these gradients, which are the same shape as the image should provide some intuition of attention. 
 
-* [CAM](https://arxiv.org/abs/1610.02391), [grad-CAM](https://arxiv.org/abs/1610.02391)
+	The rectified/deconv saliency comes from [1311.2901](https://arxiv.org/abs/1311.2901) In deconvnet, "We present a novel way to map these activities back to the input pixel space, showing what input pattern originally caused a given activation in the feature maps." The idea is clipping negative gradients in the backprop step. i.e., only propagate positive gradient information that communicates the increase in output. In guided saliency [1412.6806](https://arxiv.org/abs/1412.6806), the backprop step is modified to only propagate positive gradients for positive activations. Check [keras-vis](https://raghakot.github.io/keras-vis/) for demos with codes. The [./images/guided backprop.png](./images/guided backprop.png) shows the difference very well.
 
-* [saliency maps 2013](https://arxiv.org/pdf/1312.6034v2) We compute the gradient of output category with respect to input image. All the positive values in the gradients tell us that a small change to that pixel will increase the output value. Hence, visualizing these gradients, which are the same shape as the image should provide some intuition of attention. [guided saliency, rectified/deconv saliency], check [keras-vis] for demos with codes.
+* "Understanding Neural Networks Through Deep Visualization" [1506.06579](https://arxiv.org/abs/1506.06579) two open-source tools are invented. The first one visualizes the activations produced on each layer of a trained convnet. The second one visualizes features at each layer of a DNN via regularized optimization in image space. The regularization methods force to bias images found via optimization toward more visually interpretable examples. Combined several new regularization methods to produce qualitatively clearer, more interpretable visualizations. Tools are in [github](https://github.com/yosinski/deep-visualization-toolbox).
+
+* Deep Dream ([google github](https://github.com/google/deepdream)) The dreaming idea and name became popular on the internet in 2015 thanks to Google's DeepDream program. But the idea has been dates earlier ([wiki](https://en.wikipedia.org/wiki/DeepDream)). Related visualization ideas were developed (prior to Google's work) by several research groups. 
+
+* Visualize higher layer features. Paper "visualizing higher-layer features of a deep network" [2009](https://www.researchgate.net/profile/Aaron_Courville/publication/265022827_Visualizing_Higher-Layer_Features_of_a_Deep_Network/links/53ff82b00cf24c81027da530.pdf) Old paper related to understand each layer of networks.
+
+* CAM [1512.04150](https://arxiv.org/abs/1512.04150) CNNs trained on classification tasks also have a strong localization ability with the Class Activation Maps (CAM) which are derived from the last feature maps and the weight from FC layers. 
+ 
+* grad-CAM [1610.02391](https://arxiv.org/abs/1610.02391)
 
 ## Traditional CV Techniques
 
@@ -235,12 +243,15 @@ preprocess -> CNN
 * A review paper, ["A Performance Evaluation of Local Descriptors" CVPR 2003](http://www.ai.mit.edu/courses/6.891/handouts/mikolajczyk_cvpr2003.pdf), shows the local descriptors and helps you to understand how edge detectors work. There are hand-craft features which are similar to what CNN created.
 * Selective search
 * Image pyramid
+* GrabCut Check the [demo](https://docs.opencv.org/3.1.0/d8/d83/tutorial_py_grabcut.html) in OpenCV.
 
 Before using deep learning as segmentation, people found [TextonForest 2018](http://mi.eng.cam.ac.uk/~cipolla/publications/inproceedings/2008-CVPR-semantic-texton-forests.pdf) and [Random Forest based classifiers 2011](http://www.cse.chalmers.se/edu/year/2011/course/TDA361/Advanced%20Computer%20Graphics/BodyPartRecognition.pdf).
 
 ### Sigal processing
 
 [Wiener Filter](https://en.wikipedia.org/wiki/Wiener_filter) (维纳滤波) a filter used to produce an estimate of a desired or target random process by linear time-invariant (LTI) filtering of an observed noisy process, assuming known stationary signal and noise spectra, and additive noise.
+
+[Gabor filter](https://en.wikipedia.org/wiki/Gabor_filter) a linear filter used for texture analysis, which means that it basically analyzes whether there are any specific frequency content in the image in specific directions in a localized region around the point or region of analysis. 
 
 ![](./**.png)
 
