@@ -10,7 +10,7 @@ This repo is for the purpose of recalling some important information, not for ex
 
 
 You can find the structure of different models in folder [images](./images).
-You can find my collection of different learning curves in [learning curves](./learning\ curves/README.md). Believe me, you will learning a lot by just checking these beautiful curves.
+You can find my collection of different learning curves in [learning_curves](./learning_curves/README.md). Believe me, you will learning a lot by just checking these beautiful curves.
 
 Summary of visual recognition tasks (GAN not included):
 
