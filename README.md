@@ -14,13 +14,13 @@ You can find my collection of different learning curves in [learning curves](./l
 
 Summary of visual recognition tasks (GAN not included):
 
-- object detection
-- object classification
-- object localization
-- segmentation (Semantic / Instance segmentation)
+- Image classification
+- Object detection
+- Object localization
+- Segmentation (Semantic / Instance segmentation)
 - Autoencoder / Variational Autoencoder
-- action recoginition
-- human-object interaction
+- Action recoginition
+- Human-object interaction
 
 
 Current big problems
@@ -88,6 +88,8 @@ You can take more human priors into acount by thinking how to format the problem
 
 **FCN** [CVPR 2015](https://www.cv-foundation.org/openaccess/content_cvpr_2015/html/Long_Fully_Convolutional_Networks_2015_CVPR_paper.html) idea of upsample and provide pixel level predictions. You can create FCN-32s,FCN-16s,FCN-8s with different upsample sizes.
 
+**InstanceFCN** [1603.08678](https://arxiv.org/abs/1603.08678) Using InstanceFCN, each score map is responsible for capturing relative position of object instance. A very nice introduction from [towardsdatascience](https://towardsdatascience.com/review-instancefcn-instance-sensitive-score-maps-instance-segmentation-dbfe67d4ee92). R-FCN uses positive-sensitive score maps for object detection, while InstanceFCN uses instance-sensitive score maps for generating proposals during the instance-sensitive score maps branch. During objectness score map branch, it uses a 1x1 layer as a per-pixel logistic regression for classifying instance/not-instance of the sliding window centered at this pixel.
+
 **U-Net** [1505.04597](https://arxiv.org/abs/1505.04597) Combine earlier higher resolution features and upsampled feature to increase get better representation. 
 
 **SegNet** [1511.00561](https://arxiv.org/abs/1511.00561) SegNet includes encoder network, decoder network, pixel-wise classification layer. no full connection layer, recording max-pooling indices, memory efficient. FCN, Deeplab, DeconvNet (but nod U-Net) are compared in this paper. The significant contribution is that the maxpooling indices transferred to decoder to improve the segmentation resolution.
@@ -101,6 +103,12 @@ You can take more human priors into acount by thinking how to format the problem
 #### Haven't finish the following series.
 
 [Deeply-Supervised Nets, 1409.5185](https://arxiv.org/abs/1409.5185)
+
+**DeepMask** [towardsdatascience.com](https://towardsdatascience.com/review-deepmask-instance-segmentation-30327a072339)
+
+**RefineNet** [1611.06612](https://arxiv.org/abs/1611.06612)
+
+**PSPNet** [1612.01105](https://arxiv.org/abs/1612.01105)
 
 **MobileNet** 
 
@@ -122,7 +130,17 @@ DeepLabv3+ [1802.02611](https://arxiv.org/abs/1802.02611): Extend DeepLabv3 to i
 **DBM** deep Boltzmann machine
 **DBN** deep belief networks
 
+**FaceNet**
+
+**FCNT** **GOTURN** **C-COT** **SiameseFC** object tracking
+
+**CRNN** **CTPN** OCR
+
+
+
 ## Techniques
+
+**Batch Normalization** [1805.11604v3](https://arxiv.org/abs/1805.11604) This paper talks about why BN helps. The popular belief is that the BN reduces the so-called “internal covariate shift”. The paper demonstrates that such distributional stability of layer inputs has little to do with the success of BatchNorm. Instead, a more fundamental impact of BatchNorm on the training process: it makes the optimization landscape significantly smoother. This smoothness induces a more predictive and stable behavior of the gradients, allowing for faster training.
 
 **ReLu, Leaky Relu, ELU, SELU** The ReLu keep the gradient to 1 to avoid the gradient vanishing and exploding problems, but it face dying ReLu problem as the model has low response for negative values. The [Leaky ReLu](https://ai.stanford.edu/~amaas/papers/relu_hybrid_icml2013_final.pdf) in 2013, [ELU](https://arxiv.org/abs/1511.07289) in 2015, [SELU](https://arxiv.org/abs/1706.02515) (scaled exponential Linear Unit) in 2017 solves the problem by change the format when x < 0.
 
@@ -256,6 +274,10 @@ Before using deep learning as segmentation, people found [TextonForest 2018](htt
 [Wiener Filter](https://en.wikipedia.org/wiki/Wiener_filter) (维纳滤波) a filter used to produce an estimate of a desired or target random process by linear time-invariant (LTI) filtering of an observed noisy process, assuming known stationary signal and noise spectra, and additive noise.
 
 [Gabor filter](https://en.wikipedia.org/wiki/Gabor_filter) a linear filter used for texture analysis, which means that it basically analyzes whether there are any specific frequency content in the image in specific directions in a localized region around the point or region of analysis. 
+
+[Kalman Filter](https://en.wikipedia.org/wiki/Kalman_filter) In statistics and control theory, Kalman filtering, also known as linear quadratic estimation (LQE), is an algorithm that uses a series of measurements observed over time, containing statistical noise and other inaccuracies, and produces estimates of unknown variables that tend to be more accurate than those based on a single measurement alone, by estimating a joint probability distribution over the variables for each timeframe. It can be used to fuse data from different sensors to get higher accurate measurements. It is fast, memory friendly. Refer GraphSLAM for most updated methods.
+
+[SLAM](https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping) simultaneous localization and mapping (定位与建图). It is the computational problem of constructing or updating a map of an unknown environment while simultaneously keeping track of an agent's location within it. It is a large topic. 
 
 ![](./**.png)
 
