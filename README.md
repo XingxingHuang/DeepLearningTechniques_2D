@@ -33,6 +33,8 @@ Current big problems
 
 ## Models
 
+Review artical [1803.01164](https://arxiv.org/abs/1803.01164), `The History Began from AlexNet: A Comprehensive Survey on Deep Learning Approaches`. It tried to cover histories about CNN structures. Good to have a quick go through.
+
 **LeNet-5** First network by [LeCun](http://yann.lecun.com/exdb/lenet/). LeNet-5 is a very simple network. It only has 7 layers, among which there are 3 convolutional layers (C1, C3 and C5), 2 sub-sampling (pooling) layers (S2 and S4), and 1 fully connected layer (F6), that are followed by the output layer. 
 
 **AlexNet** [papers.nips.cc](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf) Similar to LeNet but famous and provide a template for future CNN. 1) Used ImageSet; 2) Used GPU; 2) Lots of ideas (ReLU, Nomalization LRN (local response normalization), data argumentation, dropout, use max-pooling intead of average pooling). `LRN is found useless later as compared to BN and dropped afterward.`
@@ -100,21 +102,24 @@ You can take more human priors into acount by thinking how to format the problem
 
 **RetinaNet** Best Student Paper Award at ICCV 2017, [1708.02002](https://arxiv.org/abs/1708.02002) Use focal loss (still using FPN model) to solve the class unbalance problem (especially most regions are background. This problem is reduced a little in two stage models as the model will distinguish backgrounds or objects before the classification.). And the author design a signle stage model RetinaNet to check how useful the focal loss is. `RetinaNet = FPN + ResNet + FL`.  RetinaNet is one stage detector, fast and accurate. Although RetinaNet says higher performance compared to YOLOv2, YOLOv3 claims higher performance in their paper.
 
+
+**MobileNet** [1704.04861](https://arxiv.org/abs/1704.04861)
+
+**ShuffleNet** [1707.01083](https://arxiv.org/abs/1707.01083)
+
+**SENet** [1709.01507](https://arxiv.org/abs/1709.01507) Squeeze-and-Excitation Networks
+
 --
 
 #### Haven't finish the following series.
 
-[Deeply-Supervised Nets, 1409.5185](https://arxiv.org/abs/1409.5185)
+**Deeply-Supervised Nets** [1409.5185](https://arxiv.org/abs/1409.5185)
 
 **DeepMask** [towardsdatascience.com](https://towardsdatascience.com/review-deepmask-instance-segmentation-30327a072339)
 
 **RefineNet** [1611.06612](https://arxiv.org/abs/1611.06612)
 
 **PSPNet** [1612.01105](https://arxiv.org/abs/1612.01105)
-
-**MobileNet** 
-
-**ShuffleNet**
 
 **FractalNet** [1605.07648](https://arxiv.org/abs/1605.07648)
 
@@ -153,7 +158,7 @@ DeepLabv3+ [1802.02611](https://arxiv.org/abs/1802.02611): Extend DeepLabv3 to i
 
 **Spatial Pyramid Pooling** [1406.4729](https://arxiv.org/abs/1406.4729) Kaiming he. Also called SPP-Net. deal with different size inputs. Smart idea, but I think the use pooling for different scales may still cause problem. Especially your target has a large size variation. 
 
-**SQueezeNet** [1602.07360](https://arxiv.org/abs/1602.07360) Use the Fire module to squeeze the networks and get compressed model ~ 0.5 MB. Found DSD (Dense→Sparse→Dense) method that to use spared pretrain mdoel to retrain could get better results.
+**SQueezeNet** [1602.07360](https://arxiv.org/abs/1602.07360) Use the Fire module to squeeze the networks and get compressed model ~ 0.5 MB. Found DSD (Dense→Sparse→Dense) method that to use spared pretrain mdoel to retrain could get better results. During the fire module, one conv layer is divided to two layers , squeeze layer and the expand layer (one with 1x1 conv only, one with 1x1 and 3x3 conv). The number of convs is following `S1x1 < E1x1 + E3x3`. They use `S1x1 = E1x1 / 4 + E3x3 / 4` in the paper. As the output of squeeze layer has fewer channels. The total number of parameters decreases significantly.
 
 **Region of Interested Pooling** ROI pooling. share features by combine the bbox regression and CNN.
 
