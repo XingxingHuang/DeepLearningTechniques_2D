@@ -2,15 +2,18 @@
 
 This repo is for the purpose of recalling some important information, not for explaining all details. So I will not expand each topic to long articals. I am planning to posting more thoughts of deep learning into [https://medium.com](https://medium.com) in 2019. 
 
+You can find the structures of different models in folder [images](./images).
+You can find my collection of different learning curves in [learning_curves](./learning_curves/README.md). Believe me, you will learning a lot by just checking these beautiful curves.
+
 ## The cue of neural networks
 
 - It is still a repreesntor for the probability distributions over the data.
 - It is a automatic feature extractors using convoluitons.
-- It cannot beat human level performance (bayes errors), but it still has its own advantage. (This is my idea. Glad to be contradictted.)
+- It cannot beat human level performance (bayes errors), but it still has its own advantage. (Humman is good in something, NN is good at different things. This is my idea. Glad to be contradictted.)
+- Metrics don't tell you everything. You need to understand what features your model has learnt. 
+- There are only two problems about your model, **overfitting** and **underfitting**. 
 
 
-You can find the structure of different models in folder [images](./images).
-You can find my collection of different learning curves in [learning_curves](./learning_curves/README.md). Believe me, you will learning a lot by just checking these beautiful curves.
 
 Summary of visual recognition tasks (GAN not included):
 
@@ -26,8 +29,9 @@ Summary of visual recognition tasks (GAN not included):
 Current big problems
 
 - Small object detection. Some objects are small while others are large. 	
-- Imbalance. Only part of the image contains the target. Some classes have more complex / higher level features.
-
+- Imbalance problem. Only part of the image contains the target. Some classes have more complex / higher level features. Some objects are more than the others.
+- What is a good label? Box/segmentation have their own trade-off.
+- How to define an environment that you can guarantee your model works?
 - To be added.
 
 ## Models
