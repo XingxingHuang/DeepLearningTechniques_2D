@@ -21,6 +21,7 @@ Summary of visual recognition tasks (GAN not included):
 - Object detection
 - Object localization
 - Segmentation (Semantic / Instance segmentation)
+- Image matting (one pixel is a combination of forground and background)
 - Autoencoder / Variational Autoencoder
 - Action recoginition
 - Human-object interaction
@@ -36,9 +37,13 @@ Current big problems
 
 ## Models
 
+Review artical [1803.01164](https://arxiv.org/abs/1803.01164), `The History Began from AlexNet: A Comprehensive Survey on Deep Learning Approaches`. It tried to cover histories about CNN structures. Good to have a quick go through.
+
 **LeNet-5** First network by [LeCun](http://yann.lecun.com/exdb/lenet/). LeNet-5 is a very simple network. It only has 7 layers, among which there are 3 convolutional layers (C1, C3 and C5), 2 sub-sampling (pooling) layers (S2 and S4), and 1 fully connected layer (F6), that are followed by the output layer. 
 
 **AlexNet** [papers.nips.cc](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf) Similar to LeNet but famous and provide a template for future CNN. 1) Used ImageSet; 2) Used GPU; 2) Lots of ideas (ReLU, Nomalization LRN (local response normalization), data argumentation, dropout, use max-pooling intead of average pooling). `LRN is found useless later as compared to BN and dropped afterward.`
+
+**ZFNet** [1311.2901](https://arxiv.org/abs/1311.2901) Winner of 2013 ILSVR. Similar to AlexNet, uses 7x7 kernels instead of 11x11 kernels to significantly reduce the number of weights. Also introduces the visualization method with deconv.
 
 **OverFeat** [1312.6229](https://arxiv.org/pdf/1312.6229) combine localization, localization, detection. The winner of localization task in ILSVR2013. Use multi-scale method for classification, combine classification network and regression network for localization.
 
@@ -58,8 +63,7 @@ Current big problems
 **ResNeXt** [1611.05431](https://arxiv.org/abs/1611.05431) Good paper to read. Briliant idea that combine resnet and Xception. Mentioned the "cardinality" as the size of the set of transformations. The experiments demostrate that increasing the cardinality is a more effective way of gaining accuracy than going deeper or wider. 
 
 **YOLO**	[1506.02640](https://arxiv.org/abs/1506.02640) Provide an end to end solution to detect multiple objects in one images. The model predicts the location and the class in the mean time (5 parameters). Use Non-maximum Suppression
- to cure the problem of multiple detections of the same image. <https://pjreddie.com/darknet/yolo/> [You Only Look Once: Unified, Real-Time Object Detection](https://arxiv.org/pdf/1506.02640.pdf) 
-
+ to cure the problem of multiple detections of the same image. <https://pjreddie.com/darknet/yolo/> 
 ```
 grid: 7x7
 box: 2
@@ -79,7 +83,7 @@ Loss function: box coordinate + box size (square) + confidence
 
 **Faster R-CNN** [1506.01497](https://arxiv.org/pdf/1506.01497) Extract feature map and then use Region Proposal Network (RPN) and anchors to propose boxes/regions. They only use 9 anchors with 3 different scales and 3 aspect ratios.
 
-**Mask R-CNN** [Marr Prize at ICCV 2017](https://arxiv.org/abs/1703.06870) A Great paper to read. "Our approach efficiently detects objects in an image while simultaneously generating a high-quality segmentation mask for each in- stance." It extends faster R-CNN by adding a branch for predicting segmentation masks. (x) Use ResNeXt-101 + FPN for feature extraction. (x) replace the ROI pooling to ROI align (solved mis-alignment problem with ROI pooling). (x) add FCN layers to get segmentations. This model is not huge improvement, but it can get state of art performance and be easily extend to other tasks. Check [the oral slide](https://www.slideshare.net/windmdk/mask-rcnn) by Kaiming in ICCV 2017 to get the R-CNN evolution.
+**Mask R-CNN** [Marr Prize at ICCV 2017](https://arxiv.org/abs/1703.06870) A Great paper to read. "Our approach efficiently detects objects in an image while simultaneously generating a high-quality segmentation mask for each in- stance." It extends faster R-CNN by adding a branch for predicting segmentation masks. (x) Use ResNeXt-101 + FPN for feature extraction. (x) replace the ROI pooling to ROI align (solved mis-alignment problem with ROI pooling). (x) add FCN lay ers to get segmentations. This model is not huge improvement, but it can get state of art performance and be easily extend to other tasks. Check [the oral slide](https://www.slideshare.net/windmdk/mask-rcnn) by Kaiming in ICCV 2017 to get the R-CNN evolution.
 
 ```
 You can image that using archor boxes in these object detection algorithm is just using human prior to simplify the problems. 
@@ -102,11 +106,18 @@ You can take more human priors into acount by thinking how to format the problem
 
 **RetinaNet** Best Student Paper Award at ICCV 2017, [1708.02002](https://arxiv.org/abs/1708.02002) Use focal loss (still using FPN model) to solve the class unbalance problem (especially most regions are background. This problem is reduced a little in two stage models as the model will distinguish backgrounds or objects before the classification.). And the author design a signle stage model RetinaNet to check how useful the focal loss is. `RetinaNet = FPN + ResNet + FL`.  RetinaNet is one stage detector, fast and accurate. Although RetinaNet says higher performance compared to YOLOv2, YOLOv3 claims higher performance in their paper.
 
+
+**MobileNet** [1704.04861](https://arxiv.org/abs/1704.04861)
+
+**ShuffleNet** [1707.01083](https://arxiv.org/abs/1707.01083)
+
+**SENet** [1709.01507](https://arxiv.org/abs/1709.01507) Squeeze-and-Excitation Networks
+
 --
 
 #### Haven't finish the following series.
 
-[Deeply-Supervised Nets, 1409.5185](https://arxiv.org/abs/1409.5185)
+**Deeply-Supervised Nets** [1409.5185](https://arxiv.org/abs/1409.5185)
 
 **DeepMask** [towardsdatascience.com](https://towardsdatascience.com/review-deepmask-instance-segmentation-30327a072339)
 
@@ -114,9 +125,7 @@ You can take more human priors into acount by thinking how to format the problem
 
 **PSPNet** [1612.01105](https://arxiv.org/abs/1612.01105)
 
-**MobileNet** 
-
-**ShuffleNet**
+**FractalNet** [1605.07648](https://arxiv.org/abs/1605.07648)
 
 **DeepLab** [1606.00915](https://arxiv.org/abs/1606.00915) The implementation with Tensoflow can be found in Github/tensorflow/models/research/[deeplab](https://github.com/tensorflow/models/tree/master/research/deeplab)
 
@@ -140,6 +149,7 @@ DeepLabv3+ [1802.02611](https://arxiv.org/abs/1802.02611): Extend DeepLabv3 to i
 
 **CRNN** **CTPN** OCR
 
+**Semantic Human Matting** [1809.01354](https://arxiv.org/abs/1809.01354) Collect a large dataset for the image matting problem. Designed an end to end solution with three part: T-Net, which is any kinds of segmentation model to get three map for forground, background, unkown region segmentation (called trimaps); M-Net, which is used to get the alpha channel with RGB images and output from T-Net; Fusion module to get the alpha map with the output from above two networks. Check a related work [alphaGAN](https://neurohive.io/en/state-of-the-art/alphagan-natural-image-matting/) which also shows the related works in this field.
 
 
 ## Techniques
@@ -152,7 +162,7 @@ DeepLabv3+ [1802.02611](https://arxiv.org/abs/1802.02611): Extend DeepLabv3 to i
 
 **Spatial Pyramid Pooling** [1406.4729](https://arxiv.org/abs/1406.4729) Kaiming he. Also called SPP-Net. deal with different size inputs. Smart idea, but I think the use pooling for different scales may still cause problem. Especially your target has a large size variation. 
 
-**SQueezeNet** [1602.07360](https://arxiv.org/abs/1602.07360) Use the Fire module to squeeze the networks and get compressed model ~ 0.5 MB. Found DSD (Dense→Sparse→Dense) method that to use spared pretrain mdoel to retrain could get better results.
+**SQueezeNet** [1602.07360](https://arxiv.org/abs/1602.07360) Use the Fire module to squeeze the networks and get compressed model ~ 0.5 MB. Found DSD (Dense→Sparse→Dense) method that to use spared pretrain mdoel to retrain could get better results. During the fire module, one conv layer is divided to two layers , squeeze layer and the expand layer (one with 1x1 conv only, one with 1x1 and 3x3 conv). The number of convs is following `S1x1 < E1x1 + E3x3`. They use `S1x1 = E1x1 / 4 + E3x3 / 4` in the paper. As the output of squeeze layer has fewer channels. The total number of parameters decreases significantly.
 
 **Region of Interested Pooling** ROI pooling. share features by combine the bbox regression and CNN.
 
@@ -226,6 +236,8 @@ Rules of Thumb
 * t-SNE, T-Distributed Stochastic Neighbouring Entities, [orignal paper](http://jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf)
 
 * Mask Input and check the predictions. Or local interpretable model-agnostic explanations (LIME)
+
+This repo include several CNN visualization method implemented in Pytorch. [utkuozbulak/pytorch-cnn-visualizations](https://github.com/utkuozbulak/pytorch-cnn-visualizations)
 
 * [saliency maps 1312.6034v2](https://arxiv.org/abs/1312.6034v2) The idea is to find pixels need to be changed the least to affect the class score the most. In this paper, they provide two visualizations. One method is to generate an image to maximise the class score and the other method is saliency map. They compute the gradient of output category with respect to input image. All the positive values in the gradients tell us that a small change to that pixel will increase the output value. Hence, visualizing these gradients, which are the same shape as the image should provide some intuition of attention. 
 
