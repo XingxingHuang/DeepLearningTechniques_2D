@@ -21,6 +21,8 @@ Summary of visual recognition tasks (GAN not included):
 - Object detection
 - Object localization
 - Segmentation (Semantic / Instance segmentation)
+- Edge detection
+- Occlusion detection (edge detection with border- ownership)
 - Image matting (one pixel is a combination of forground and background)
 - Autoencoder / Variational Autoencoder
 - Action recoginition
@@ -178,7 +180,7 @@ DeepLabv3+ [1802.02611](https://arxiv.org/abs/1802.02611): Extend DeepLabv3 to i
 
 **Group Normalization** [1803.08494](https://arxiv.org/abs/1803.08494) GN divides the channels into groups and computes within each group the mean and variance for normalization. GN's computation is independent of batch sizes, and its accuracy is stable in a wide range of batch sizes.
 
-**CRF** Conditional Random Field (CRF) postprocessing are usually used to improve the segmentation. CRFs are graphical models which ‘smooth’ segmentation based on the underlying image intensities. They work based on the observation that similar intensity pixels tend to be labeled as the same class. CRFs can boost scores by 1-2%.
+**CRF** Conditional Random Field (CRF) postprocessing are usually used to improve the segmentation. CRFs are graphical models which ‘smooth’ segmentation based on the underlying image intensities. They work based on the observation that similar intensity pixels tend to be labeled as the same class. CRFs can boost scores by 1-2%. Gener- ative Adversarial Network (GAN) methods can also be used to improve the results.
 
 **RNN** RNN > LSTM > GRU > 
 
@@ -194,7 +196,9 @@ Rules of Thumb
 ```
 - Create clean training data (!) with clean (!) labels.
 - Solve the problem with deep learning and (!) CV method.
+- Start experiments with a small dataset (!) and small networks (!).
 - Make the model robust using data argumentations or preprocesses.
+- Make sure the model focuses on the right feature even the metric looks nice.
 - Choose the right task and right CNN (classification/segmentation/multi-scale detetion, and so on). This is very tricky as sometime times people want you to detect xxx, but actually you can think the problem in other ways like segmentation/ abnormal detection / etc.
 ```
 
@@ -232,7 +236,14 @@ Rules of Thumb
 ## Why Deep Learning Works in CV
 * Translation invariant, scale invariant, Distortion invariant. 卷积网络结合了三种关键性思想来确保模型对图像的平移、缩放和扭曲具有一定程度的不变性，这三种关键思想即局部感受野、权重共享和空间/时间子采样 (ref: [机器之心](https://mp.weixin.qq.com/s/okx0jZR6PmFm3ikCCUbNkg)). Attention, CNN is not totally translation invariant as discussed in this paper [Why do deep convolutional networks generalize so poorly to small image transformations?](https://arxiv.org/abs/1805.12177)
 
+## Why Deep Learning Does not Work
+
+[1805.04025](https://arxiv.org/abs/1805.04025) At present Deep Nets do very well on specific types of visual tasks and on specific benchmarked datasets. But Deep Nets are much less general purpose, flexible, and adaptive than the human visual system. Moreover, methods like Deep Nets may run into fundamental difficulties when faced with the enormous complexity of natural images which can lead to a combinatorial explosion. We need to  ensure that algorithms are capturing the underlying structure of the data instead of merely memorizing the train- ing data. 
+
 ## visualization
+
+[1802.00614](https://arxiv.org/abs/1802.00614) Visual Interpretability for Deep Learning: a Survey 
+
 * t-SNE, T-Distributed Stochastic Neighbouring Entities, [orignal paper](http://jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf)
 
 * Mask Input and check the predictions. Or local interpretable model-agnostic explanations (LIME)
