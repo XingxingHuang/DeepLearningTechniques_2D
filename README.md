@@ -121,7 +121,7 @@ You can take more human priors into acount by thinking how to format the problem
 
 **Deeply-Supervised Nets** [1409.5185](https://arxiv.org/abs/1409.5185)
 
-**DeepMask** [towardsdatascience.com](https://towardsdatascience.com/review-deepmask-instance-segmentation-30327a072339)
+**DeepMask** [towardsdatascience.com](https://towardsdatascience.com/review-deepmask-instance-segmentation-30327a072339). SharpMask, MultiPath, MNC. Instance Segmentation.
 
 **RefineNet** [1611.06612](https://arxiv.org/abs/1611.06612)
 
