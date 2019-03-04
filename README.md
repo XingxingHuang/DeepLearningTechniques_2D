@@ -106,12 +106,11 @@ You can take more human priors into acount by thinking how to format the problem
 
 **FPN** [1612.03144](https://arxiv.org/abs/1612.03144) Feature Pyramid Networks for Object Detection. They exploit the inherent multi-scale, pyramidal hierarchy of deep convolutional networks to construct feature pyramids with marginal extra cost. In past networks, Fast RCNN, Faster RCNN only use the last layers as feature map, SSD uses different layers but doesn't have upsample and combine different scales. 
 
-**RetinaNet** Best Student Paper Award at ICCV 2017, [1708.02002](https://arxiv.org/abs/1708.02002) Use focal loss (still using FPN model) to solve the class unbalance problem (especially most regions are background. This problem is reduced a little in two stage models as the model will distinguish backgrounds or objects before the classification.). And the author design a signle stage model RetinaNet to check how useful the focal loss is. `RetinaNet = FPN + ResNet + FL`.  RetinaNet is one stage detector, fast and accurate. Although RetinaNet says higher performance compared to YOLOv2, YOLOv3 claims higher performance in their paper.
+**RetinaNet** [1708.02002](https://arxiv.org/abs/1708.02002), Best Student Paper Award at ICCV 2017. Use focal loss (still using FPN model) to solve the class unbalance problem (especially most regions are background. This problem is reduced a little in two stage models as the model will distinguish backgrounds or objects before the classification.). And the author design a signle stage model RetinaNet to check how useful the focal loss is. `RetinaNet = FPN + ResNet + FL`.  RetinaNet is one stage detector, fast and accurate. Although RetinaNet says higher performance compared to YOLOv2, YOLOv3 claims higher performance in their paper.
 
+**MobileNet** [1704.04861](https://arxiv.org/abs/1704.04861) Invented depth wise separable convolutions which is kxk with 1 channel and followed by 1x1 with n channel. In MobileNet, most calculations and parameters are in 1x1 convolution layers. Introduced two parameters width multiplier (reduce parameters to ~ alpha^2) and resolution multiplier (control the input resolution of each layer). Other common methods to make the model smaller in other papers: Use 1xN and Nx1 to replace NxN conv; Bottleneck structure similar to SqueezeNet; Use low precision float; Huffman Coding. **MobileNet v2**, [1801.04381](https://arxiv.org/abs/1801.04381) designed an inverted residual structure, found remove non-linearities in the narrow layers. (To be added)
 
-**MobileNet** [1704.04861](https://arxiv.org/abs/1704.04861)
-
-**ShuffleNet** [1707.01083](https://arxiv.org/abs/1707.01083)
+**ShuffleNet** [1707.01083](https://arxiv.org/abs/1707.01083) Introduced group convolution and channel shuffle to improve the ResNet. Channel shuffle is used to share informations between different groups. Please carefully check [Fig. 2](./images/ShuffleNet.jpg) in the paper to understand the revolutions. **ShuffleNet v2**, [1807.11164](https://arxiv.org/abs/1807.11164). (To be added, This is a good paper to read).
 
 **SENet** [1709.01507](https://arxiv.org/abs/1709.01507) Squeeze-and-Excitation Networks
 
@@ -131,18 +130,20 @@ You can take more human priors into acount by thinking how to format the problem
 
 **DeepLab** [1606.00915](https://arxiv.org/abs/1606.00915) The implementation with Tensoflow can be found in Github/tensorflow/models/research/[deeplab](https://github.com/tensorflow/models/tree/master/research/deeplab)
 
-DeepLabv1 [1412.7062](https://arxiv.org/abs/1412.7062): Use atrous convolution to explicitly control the resolution at which feature responses are computed within Deep Convolutional Neural Networks.
+- DeepLabv1 [1412.7062](https://arxiv.org/abs/1412.7062): Use atrous convolution to explicitly control the resolution at which feature responses are computed within Deep Convolutional Neural Networks.
 
-DeepLabv2 [1606.00915](https://arxiv.org/abs/1606.00915): Use atrous spatial pyramid pooling (ASPP) to robustly segment objects at multiple scales with filters at multiple sampling rates and effective fields-of-views.
+- DeepLabv2 [1606.00915](https://arxiv.org/abs/1606.00915): Use atrous spatial pyramid pooling (ASPP) to robustly segment objects at multiple scales with filters at multiple sampling rates and effective fields-of-views.
 
-DeepLabv3 [1706.05587](https://arxiv.org/abs/1706.05587): Augment the ASPP module with image-level feature [5, 6] to capture longer range information. We also include batch normalization [7] parameters to facilitate the training. In particular, we applying atrous convolution to extract output features at different output strides during training and evaluation, which efficiently enables training BN at output stride = 16 and attains a high performance at output stride = 8 during evaluation.
+- DeepLabv3 [1706.05587](https://arxiv.org/abs/1706.05587): Augment the ASPP module with image-level feature [5, 6] to capture longer range information. We also include batch normalization [7] parameters to facilitate the training. In particular, we applying atrous convolution to extract output features at different output strides during training and evaluation, which efficiently enables training BN at output stride = 16 and attains a high performance at output stride = 8 during evaluation.
 
-DeepLabv3+ [1802.02611](https://arxiv.org/abs/1802.02611): Extend DeepLabv3 to include a simple yet effective decoder module to refine the segmentation results especially along object boundaries. Furthermore, in this encoder-decoder structure one can arbitrarily control the resolution of extracted encoder features by atrous convolution to trade-off precision and runtime.
+- DeepLabv3+ [1802.02611](https://arxiv.org/abs/1802.02611): Extend DeepLabv3 to include a simple yet effective decoder module to refine the segmentation results especially along object boundaries. Furthermore, in this encoder-decoder structure one can arbitrarily control the resolution of extracted encoder features by atrous convolution to trade-off precision and runtime.
 
 ## Other models
 
 **RBM** restricted Boltzmann machine
+
 **DBM** deep Boltzmann machine
+
 **DBN** deep belief networks
 
 **FaceNet**
