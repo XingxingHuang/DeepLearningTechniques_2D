@@ -102,7 +102,11 @@ You can take more human priors into acount by thinking how to format the problem
 
 **U-Net** [1505.04597](https://arxiv.org/abs/1505.04597) Combine earlier higher resolution features and upsampled feature to increase get better representation. 
 
+**Tiramisu Model** [1611.09326](https://arxiv.org/abs/1611.09326) Upgrade version of Unet by using dense block. Extremely parameter efficient and can better access features from older layers, but not very memory efficient
+
 **SegNet** [1511.00561](https://arxiv.org/abs/1511.00561) SegNet includes encoder network, decoder network, pixel-wise classification layer. no full connection layer, recording max-pooling indices, memory efficient. FCN, Deeplab, DeconvNet (but nod U-Net) are compared in this paper. The significant contribution is that the maxpooling indices transferred to decoder to improve the segmentation resolution.
+
+**PSPNet** [1612.01105](https://arxiv.org/abs/1612.01105) PSPNet performs the pooling operation (max or average) using four different kernel sizes and strides to the output feature map of a CNN such as the ResNet. It then upsamples the size of all the pooling outputs and the CNN output feature map using bilinear interpolation, and concatenates all of them along the channel axis. A final convolution is performed on this concatenated output to generate the prediction.
 
 **FPN** [1612.03144](https://arxiv.org/abs/1612.03144) Feature Pyramid Networks for Object Detection. They exploit the inherent multi-scale, pyramidal hierarchy of deep convolutional networks to construct feature pyramids with marginal extra cost. In past networks, Fast RCNN, Faster RCNN only use the last layers as feature map, SSD uses different layers but doesn't have upsample and combine different scales. 
 
@@ -123,8 +127,6 @@ You can take more human priors into acount by thinking how to format the problem
 **DeepMask** [towardsdatascience.com](https://towardsdatascience.com/review-deepmask-instance-segmentation-30327a072339). SharpMask, MultiPath, MNC. Instance Segmentation.
 
 **RefineNet** [1611.06612](https://arxiv.org/abs/1611.06612)
-
-**PSPNet** [1612.01105](https://arxiv.org/abs/1612.01105)
 
 **FractalNet** [1605.07648](https://arxiv.org/abs/1605.07648)
 
