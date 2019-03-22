@@ -129,6 +129,8 @@ You can take more human priors into acount by thinking how to format the problem
 
 **RefineNet** [1611.06612](https://arxiv.org/abs/1611.06612)
 
+**PSPNet** [1612.01105](https://arxiv.org/abs/1612.01105)
+
 **FractalNet** [1605.07648](https://arxiv.org/abs/1605.07648)
 
 **DeepLab** [1606.00915](https://arxiv.org/abs/1606.00915) The implementation with Tensoflow can be found in Github/tensorflow/models/research/[deeplab](https://github.com/tensorflow/models/tree/master/research/deeplab)
