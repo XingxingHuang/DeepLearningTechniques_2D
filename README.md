@@ -22,9 +22,10 @@ Summary of visual recognition tasks (GAN not included):
 - Object localization
 - Segmentation (Semantic / Instance segmentation)
 - Edge detection
-- Occlusion detection (edge detection with border- ownership)
+- Occlusion detection (edge detection with border-ownership)
 - Image matting (one pixel is a combination of forground and background)
 - Autoencoder / Variational Autoencoder
+- object tracking
 - Action recoginition
 - Human-object interaction
 
@@ -181,7 +182,7 @@ You can take more human priors into acount by thinking how to format the problem
 
 **Group Normalization** [1803.08494](https://arxiv.org/abs/1803.08494) GN divides the channels into groups and computes within each group the mean and variance for normalization. GN's computation is independent of batch sizes, and its accuracy is stable in a wide range of batch sizes.
 
-**CRF** Conditional Random Field (CRF) postprocessing are usually used to improve the segmentation. CRFs are graphical models which ‘smooth’ segmentation based on the underlying image intensities. They work based on the observation that similar intensity pixels tend to be labeled as the same class. CRFs can boost scores by 1-2%. Gener- ative Adversarial Network (GAN) methods can also be used to improve the results.
+**CRF** Conditional Random Field (CRF) postprocessing are usually used to improve the segmentation. CRFs are graphical models which ‘smooth’ segmentation based on the underlying image intensities. They work based on the observation that similar intensity pixels tend to be labeled as the same class. CRFs can boost scores by 1-2%. Generative Adversarial Network (GAN) methods can also be used to improve the results.
 
 **RNN** RNN > LSTM > GRU > 
 
@@ -304,6 +305,8 @@ Before using deep learning as segmentation, people found [TextonForest 2018](htt
 [Gabor filter](https://en.wikipedia.org/wiki/Gabor_filter) a linear filter used for texture analysis, which means that it basically analyzes whether there are any specific frequency content in the image in specific directions in a localized region around the point or region of analysis. 
 
 [Kalman Filter](https://en.wikipedia.org/wiki/Kalman_filter) In statistics and control theory, Kalman filtering, also known as linear quadratic estimation (LQE), is an algorithm that uses a series of measurements observed over time, containing statistical noise and other inaccuracies, and produces estimates of unknown variables that tend to be more accurate than those based on a single measurement alone, by estimating a joint probability distribution over the variables for each timeframe. It can be used to fuse data from different sensors to get higher accurate measurements. It is fast, memory friendly. Refer GraphSLAM for most updated methods.
+
+[JPDAF](https://en.wikipedia.org/wiki/Joint_Probabilistic_Data_Association_Filter) Joint probabilistic data association filter (JPDAF). There are three method to solve the Multitarget tracking (MTT) problem: JPDAF (joint probabilistic data association filter, 联合概率数据互联滤波器), MHT (multiple hypothesis tracking, 多假设跟踪) 和 RFS (random finite set, 随机有限子集) (from [知乎](https://zhuanlan.zhihu.com/p/36988027)).
 
 [SLAM](https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping) simultaneous localization and mapping (定位与建图). It is the computational problem of constructing or updating a map of an unknown environment while simultaneously keeping track of an agent's location within it. It is a large topic. 
 
