@@ -39,7 +39,12 @@ Current big problems
 
 ## Models
 
-Review artical [1803.01164](https://arxiv.org/abs/1803.01164), `The History Began from AlexNet: A Comprehensive Survey on Deep Learning Approaches`. It tried to cover histories about CNN structures. Good to have a quick go through.
+**Review artical**
+
+- [1803.01164](https://arxiv.org/abs/1803.01164), `The History Began from AlexNet: A Comprehensive Survey on Deep Learning Approaches`. It tried to cover histories about CNN structures. Good to have a quick go through.
+- [1807.05511](https://arxiv.org/abs/1807.05511) `Object Detection with Deep Learning: A Review`.
+- [1904.09146](https://arxiv.org/abs/1904.09146) `Salient Object Detection in the Deep Learning Era: An In-Depth Survey`.
+- [1905.05055](https://arxiv.org/abs/1905.05055) `Object Detection in 20 Years: A Survey`.
 
 **LeNet-5** First network by [LeCun](http://yann.lecun.com/exdb/lenet/). LeNet-5 is a very simple network. It only has 7 layers, among which there are 3 convolutional layers (C1, C3 and C5), 2 sub-sampling (pooling) layers (S2 and S4), and 1 fully connected layer (F6), that are followed by the output layer. 
 
@@ -104,7 +109,7 @@ You can take more human priors into acount by thinking how to format the problem
 
 **Tiramisu Model** [1611.09326](https://arxiv.org/abs/1611.09326) Upgrade version of Unet by using dense block. Extremely parameter efficient and can better access features from older layers, but not very memory efficient
 
-**SegNet** [1511.00561](https://arxiv.org/abs/1511.00561) SegNet includes encoder network, decoder network, pixel-wise classification layer. no full connection layer, recording max-pooling indices, memory efficient. FCN, Deeplab, DeconvNet (but nod U-Net) are compared in this paper. The significant contribution is that the maxpooling indices transferred to decoder to improve the segmentation resolution.
+**SegNet** [1511.00561](https://arxiv.org/abs/1511.00561) SegNet includes encoder network, decoder network, pixel-wise classification layer. no full connection layer, recording max-pooling indices, memory efficient. FCN, Deeplab, DeconvNet (but not U-Net) are compared in this paper. The significant contribution is that the maxpooling indices transferred to decoder to improve the segmentation resolution.
 
 **PSPNet** [1612.01105](https://arxiv.org/abs/1612.01105) PSPNet performs the pooling operation (max or average) using four different kernel sizes and strides to the output feature map of a CNN such as the ResNet. It then upsamples the size of all the pooling outputs and the CNN output feature map using bilinear interpolation, and concatenates all of them along the channel axis. A final convolution is performed on this concatenated output to generate the prediction.
 
@@ -177,7 +182,7 @@ You can take more human priors into acount by thinking how to format the problem
 
 **softmax vs sigmoid** Softmaxing class scores assume that the classes are mutually exclusive.
 
-**Selective Search** [Selective Search for Object Recognition](http://www.huppelen.nl/publications/selectiveSearchDraft.pdf) A traditional CV method for region proposals used in RCNN. Considered color, texture, size, fill similarity between blocks and combine them using the minimum spanning tree method.
+**Selective Search** [Selective Search for Object Recognition](http://www.huppelen.nl/publications/selectiveSearchDraft.pdf) A traditional CV method for region proposals used in RCNN. Considered color, texture, size, fill similarity between blocks and combine them using the minimum spanning tree method. Another CV technique Deformable Part Model ([DPM](http://people.cs.uchicago.edu/~pff/papers/latent.pdf)), which extends HOG feature,  is also used before CNN.
 
 **Edge Boxes** Locating Object Proposals from Edges, use only CV method. decrease the region proposal speed from 2s (Selective Search) to 0.2 s
 
