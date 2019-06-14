@@ -85,6 +85,16 @@ Loss function: box coordinate + box size (square) + confidence
 
 **SSD** [1512.02325](https://arxiv.org/abs/1512.02325) Combined ideas from R-CNN and YOLO. Provide different scale detection. Compared to YOLOv3, SSD uses Softmax loss, uses VGG19 model, has Different scale and aspect ratio (5 values in the paper) for the anchor boxes, needs resize original image to fixed size. Faster but slightly worse performance (Better performance compared to Faster RCNN is report in the paper).
 
+
+
+**RetinaNet** [1708.02002](https://arxiv.org/abs/1708.02002), Best Student Paper Award at ICCV 2017. Use focal loss (still using FPN model) to solve the class unbalance problem (especially most regions are background. This problem is reduced a little in two stage models as the model will distinguish backgrounds or objects before the classification.). And the author design a signle stage model RetinaNet to check how useful the focal loss is. `RetinaNet = FPN + ResNet + FL`.  RetinaNet is one stage detector, fast and accurate. Although RetinaNet says higher performance compared to YOLOv2, YOLOv3 claims higher performance in their paper.
+
+**CornerNet** [1808.01244](https://arxiv.org/abs/1808.01244) one stage.
+
+```
+One stage method will face serious imbalance problem. So the performance is lower than two stage method. However, two stage methods are slower. 
+```
+
 **R-CNN** [1311.2524](https://arxiv.org/abs/1311.2524) R-CNN decomposes the overall detection problem into two subproblems: to first utilize low-level cues such as color and superpixel consistency for potential object proposals in a category-agnostic fashion, and to then use CNN classifiers to identify object categories at those locations. R-CNN use [Selective Search](https://ivi.fnwi.uva.nl/isis/publications/2013/UijlingsIJCV2013/UijlingsIJCV2013.pdf) method to propose 2000-3000 regions, CNN as feature extractor, SVM as classifier. Object detection in a larger size image, but also avoid to classify a huge number of regions. 
 
 **Fast R-CNN** [1504.08083](https://arxiv.org/abs/1504.08083) You don’t have to feed 2000 region proposals each time. Only extract features one time. Used Spatial Pyramid Pooling [1406.4729](https://arxiv.org/abs/1406.4729) idea, proposed ROI Pooling to get fixed output size. Used SoftmaxLoss instead of SVM, SmoothL1Loss instead of Bounding box. Share parameters between box regressions and classifications.
@@ -100,7 +110,14 @@ I believe it is important to take human prior to solve problems in your industri
 Invloving these priors can simplify the problems and increase the model robustness.
 You can take more human priors into acount by thinking how to format the problems.
 ```
+
+**FPN** [1612.03144](https://arxiv.org/abs/1612.03144) Feature Pyramid Networks for Object Detection. They exploit the inherent multi-scale, pyramidal hierarchy of deep convolutional networks to construct feature pyramids with marginal extra cost. In past networks, Fast RCNN, Faster RCNN only use the last layers as feature map, SSD uses different layers but doesn't have upsample and combine different scales. 
+
+**Cascade R-CNN** [1712.00726](https://arxiv.org/abs/1712.00726) Variable IoU would significantly improve the performance.
+
 **R-FCN** [NIPS2016, 1605.06409](https://arxiv.org/abs/1605.06409) with github [code](https://github.com/daijifeng001/r-fcn). By positive sensitive score map, the inference time is much faster than Faster R-CNN while still maintaining competitive accuracy. In R-CNN, the process (FC layers) after ROI pooling does not share among ROI, and takes time, which makes RPN approaches slow. And the FC layers increase the number of connections (parameters) and the complexity. In R-FCN, FC layers after ROI pooling are removed. Instead, all major complexity is moved before ROI pooling to generate the score maps. 
+
+**RefineDet** [1711.06897](https://arxiv.org/abs/1711.06897) A single-shot based detector consisting of two inter-connected modules, namely, the anchor refinement module and the object detection module.
 
 **FCN** [CVPR 2015](https://www.cv-foundation.org/openaccess/content_cvpr_2015/html/Long_Fully_Convolutional_Networks_2015_CVPR_paper.html) idea of upsample and provide pixel level predictions. You can create FCN-32s,FCN-16s,FCN-8s with different upsample sizes.
 
@@ -114,9 +131,8 @@ You can take more human priors into acount by thinking how to format the problem
 
 **PSPNet** [1612.01105](https://arxiv.org/abs/1612.01105) PSPNet performs the pooling operation (max or average) using four different kernel sizes and strides to the output feature map of a CNN such as the ResNet. It then upsamples the size of all the pooling outputs and the CNN output feature map using bilinear interpolation, and concatenates all of them along the channel axis. A final convolution is performed on this concatenated output to generate the prediction.
 
-**FPN** [1612.03144](https://arxiv.org/abs/1612.03144) Feature Pyramid Networks for Object Detection. They exploit the inherent multi-scale, pyramidal hierarchy of deep convolutional networks to construct feature pyramids with marginal extra cost. In past networks, Fast RCNN, Faster RCNN only use the last layers as feature map, SSD uses different layers but doesn't have upsample and combine different scales. 
+**RefineNet** [1611.06612](https://arxiv.org/abs/1611.06612) A generic multi-path refinement network that explicitly exploits all the information available along the down-sampling process to enable high-resolution prediction using long-range residual connections.
 
-**RetinaNet** [1708.02002](https://arxiv.org/abs/1708.02002), Best Student Paper Award at ICCV 2017. Use focal loss (still using FPN model) to solve the class unbalance problem (especially most regions are background. This problem is reduced a little in two stage models as the model will distinguish backgrounds or objects before the classification.). And the author design a signle stage model RetinaNet to check how useful the focal loss is. `RetinaNet = FPN + ResNet + FL`.  RetinaNet is one stage detector, fast and accurate. Although RetinaNet says higher performance compared to YOLOv2, YOLOv3 claims higher performance in their paper.
 
 **MobileNet** [1704.04861](https://arxiv.org/abs/1704.04861) Invented depth wise separable convolutions which is kxk with 1 channel and followed by 1x1 with n channel. In MobileNet, most calculations and parameters are in 1x1 convolution layers. Introduced two parameters width multiplier (reduce parameters to ~ alpha^2) and resolution multiplier (control the input resolution of each layer). Other common methods to make the model smaller in other papers: Use 1xN and Nx1 to replace NxN conv; Bottleneck structure similar to SqueezeNet; Use low precision float; Huffman Coding. **MobileNet v2**, [1801.04381](https://arxiv.org/abs/1801.04381) designed an inverted residual structure, found remove non-linearities in the narrow layers. (To be added)
 
@@ -131,8 +147,6 @@ You can take more human priors into acount by thinking how to format the problem
 **Deeply-Supervised Nets** [1409.5185](https://arxiv.org/abs/1409.5185)
 
 **DeepMask** [towardsdatascience.com](https://towardsdatascience.com/review-deepmask-instance-segmentation-30327a072339). SharpMask, MultiPath, MNC. Instance Segmentation.
-
-**RefineNet** [1611.06612](https://arxiv.org/abs/1611.06612)
 
 **PSPNet** [1612.01105](https://arxiv.org/abs/1612.01105)
 
